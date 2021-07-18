@@ -18,3 +18,14 @@ mybatis:
     map-underscore-to-camel-case: true
 
 #redis的相关配置
+
+#rabbitmq
+  rabbitmq:
+    host: 192.168.0.101 #RabbitServer ip
+    port: 5672 #RabbitServer port
+    username: root
+    password: root
+    publisher-confirms: true
+    publisher-returns: true
+    template.mandatory: true
+    exchangeName: hvp_topic_default #自定义exchangeName

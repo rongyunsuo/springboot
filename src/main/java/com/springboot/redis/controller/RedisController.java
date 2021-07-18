@@ -13,18 +13,20 @@ import java.util.Random;
 public class RedisController {
     @Autowired
     RedisUtil redisUtil;
+    String key = null;
 
     @RequestMapping("/set")
     public String set() {
         RedisUser redisUser = new RedisUser(1, "david", "123");
         int i = new Random().nextInt(100);
-        redisUtil.set("user" + i, redisUser);
+        key = "user" + i;
+        redisUtil.set(key, redisUser);
         return "success saved user !";
     }
 
     @RequestMapping("/get")
     public String get() {
-        RedisUser redisUser = (RedisUser) redisUtil.get("user");
+        RedisUser redisUser = (RedisUser) redisUtil.get(key);
         return redisUser.toString();
     }
 }
